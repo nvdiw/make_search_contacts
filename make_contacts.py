@@ -44,18 +44,28 @@ def random_number(n) :
 # returns merge {'id' 'first_name' 'last_name' 'phone_number'}
 def make_random_contacts(id , f_name , l_name , lst_number) :
     d_c = {}
-    d_contacts = []
+    lst_contacts = []
     for i in range(n) :
-        d_c = {'id' : id[i] , 'f_name' : f_name[i] , 'l_name' : l_name[i] , 'number' : lst_number[i]}
-        d_contacts.append(d_c)
-    return d_contacts
+        d_c = [ id[i] , f_name[i] , l_name[i] , lst_number[i] ]
+        lst_contacts.append(d_c)
+    return lst_contacts
+
+# import to file.csv CSV
+def import_contacts_file(title , persons) :
+    with open ('data.csv' , 'w') as f :
+        w = csv.writer(f)
+        w.writerow(title)
+        w.writerows(persons)
+
 
 def main() :
     id = random_id(n)
     f_name = random_first_name(n)
     l_name = random_last_name(n)
-    lst_number = random_number(n)
-    make_random_contacts(id , f_name , l_name , lst_number)
+    numbers = random_number(n)
+    title = ['id' , 'first_name' , 'last_name' , 'numbers']
+    import_contacts_file(title , make_random_contacts(id , f_name , l_name , numbers))
+
 
 main()
 
