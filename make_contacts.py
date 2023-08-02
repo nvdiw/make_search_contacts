@@ -1,17 +1,18 @@
 import names
 import random
 import csv
-import json
+import pandas as pd
 
-n = 10
+n = 50
 
 # returns 'n' numbers id
 def random_id(n) :
     lst_id = []
+    c = 10000
     for i in range(n) :
-        id = random.randint(10000 , 20000)
-        if id not in lst_id :
-            lst_id.append(id)
+        c += 1
+        id = c
+        lst_id.append(id)
     return lst_id
 
 # returns 'n' numbers first name
@@ -43,20 +44,26 @@ def random_number(n) :
 
 # returns merge {'id' 'first_name' 'last_name' 'phone_number'}
 def make_random_contacts(id , f_name , l_name , lst_number) :
-    d_c = {}
+    lst_c = {}
     lst_contacts = []
     for i in range(n) :
-        d_c = [ id[i] , f_name[i] , l_name[i] , lst_number[i] ]
-        lst_contacts.append(d_c)
+        lst_c = [ id[i] , f_name[i] , l_name[i] , lst_number[i] ]
+        lst_contacts.append(lst_c)
     return lst_contacts
 
 # import to file.csv CSV
 def import_contacts_file(title , persons) :
-    with open ('data.csv' , 'w') as f :
+    with open ('contacts.csv' , 'w') as f :
         w = csv.writer(f)
         w.writerow(title)
         w.writerows(persons)
 
+def sort_contacts_f_name(file) :
+    # DataFrame to read our input CS file
+    dataFrame = pd.read_csv(file)
+    # sorting according to Car column
+    dataFrame.sort_values("first_name", axis=0, ascending=True,inplace=True, na_position='first')
+    dataFrame.to_csv('contacts_sorted_fname.csv', index=False)
 
 def main() :
     id = random_id(n)
@@ -65,7 +72,7 @@ def main() :
     numbers = random_number(n)
     title = ['id' , 'first_name' , 'last_name' , 'numbers']
     import_contacts_file(title , make_random_contacts(id , f_name , l_name , numbers))
-
+    sort_contacts_f_name("contacts.csv")
 
 main()
 
