@@ -3,7 +3,7 @@ import random
 import csv
 import pandas as pd
 
-n = 50
+n = 1000
 
 # returns 'n' numbers id
 def random_id(n) :
@@ -58,6 +58,7 @@ def import_contacts_file(title , persons) :
         w.writerow(title)
         w.writerows(persons)
 
+# import sorted file as f_name
 def sort_contacts_f_name(file) :
     # DataFrame to read our input CS file
     dataFrame = pd.read_csv(file)
