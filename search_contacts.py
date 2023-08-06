@@ -35,16 +35,26 @@ for lst in dataFrame :
     
 
     elif search_for == 'letter' :
+        lst2 = lst[2].lower()
         lst = lst[1].lower()
         for my_letter in q :
             if len(q) > len(lst) :
-                break
+                if len(q) > len(lst2) :
+                    break
             elif my_letter != lst[c] :
-                break
+                if my_letter != lst2[c] :
+                    break
+                else :
+                    if my_letter == lst2[c] :
+                        x += 1
+                        if x == len(q) :
+                            lst_answers.append(lst_answer)
             elif my_letter == lst[c] :
                 x += 1
                 if x == len(q) :
                     lst_answers.append(lst_answer)
+
+            
             c += 1
 
 for i in lst_answers :
