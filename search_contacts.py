@@ -16,6 +16,8 @@ for i in q :
 
 lst_answers = []
 for lst in dataFrame :
+    if lst[1] == 'first_name' :
+        continue
     lst_answer = lst
     c = 0
     x = 0
@@ -31,10 +33,13 @@ for lst in dataFrame :
                     lst_answers.append(lst_answer)
             c += 1
     
+
     elif search_for == 'letter' :
         lst = lst[1].lower()
         for my_letter in q :
-            if my_letter != lst[c] :
+            if len(q) > len(lst) :
+                break
+            elif my_letter != lst[c] :
                 break
             elif my_letter == lst[c] :
                 x += 1
