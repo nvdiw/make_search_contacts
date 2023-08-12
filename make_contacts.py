@@ -3,7 +3,7 @@ import random
 import csv
 import pandas as pd
 
-n = 1000
+n = 2000
 
 # returns 'n' numbers id
 def random_id(n) :

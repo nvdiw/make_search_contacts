@@ -6,7 +6,7 @@ numbers = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9']
 input_q = input('searching for : ').lower()
 
 # if number return number if letter return letter
-def number_letter_input(input_q) :
+def number_letter_comparison(input_q) :
     for i in input_q :
         if i in numbers :
             search_for = 'number'
@@ -65,9 +65,9 @@ def search_name(input_q) :
 
 
 def main() :
-    if number_letter_input(input_q) == 'number' :
+    if number_letter_comparison(input_q) == 'number' :
         print_lst(search_number(input_q))
-    if number_letter_input(input_q) == 'letter' :
+    if number_letter_comparison(input_q) == 'letter' :
         print_lst(search_name(input_q))
 
 main()
