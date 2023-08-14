@@ -3,7 +3,6 @@ import csv
 file = 'contacts.csv'
 dataFrame = csv.reader(open(file , 'r'))
 x = 1
-# Python program to sort arrays of strings using merge sort
 
 # Function to compare 2 words
 def is_alphabetically_smaller(str1, str2):
@@ -18,6 +17,7 @@ def is_alphabetically_smaller(str1, str2):
         return True
     return False
 
+# merge arrays
 def merge(arr1, arr2):
     m = len(arr1)
     n = len(arr2)
@@ -39,7 +39,7 @@ def merge(arr1, arr2):
         arr3.append(arr2[j])
         j += 1
     return arr3
- 
+
 # Function to mergeSort 2 arrays
 def merge_sort(arr, lo, hi):
     if lo == hi:
@@ -52,13 +52,13 @@ def merge_sort(arr, lo, hi):
     return arr3
 
 # Driver code
-def sort_by_merge(dataFrame):
+def sort_by_merge(dataFrame) :
     arr = []
     for i in dataFrame :
         arr.append(i)
     n = len(arr)
     a = merge_sort(arr, 1, n - 1)
-    for i in range(n - 1):
+    for i in range(n - 1) :
         print(a[i])
 
 sort_by_merge(dataFrame)
