@@ -5,11 +5,11 @@ file = 'contacts.csv'
 dataFrame = csv.reader(open(file , 'r'))
 
 # returns sorted list 'bubble_sort'
-def bubble_sort(lst , x = 0) :
+def bubble_sort(lst , x = 1) :
     for i in range(len(lst)) :
         for j in range(len(lst)-1-i) :
             if lst[j][x] > lst[j+1][x] :
-                lst[j][x], lst[j+1][x] = lst[j+1][x], lst[j][x]
+                lst[j], lst[j+1] = lst[j+1], lst[j]
     return lst
 
 # runs into main function
