@@ -3,7 +3,7 @@ import random
 import csv
 import pandas as pd
 
-n = 2000
+n = 100
 
 # returns 'n' numbers id
 def random_id(n) :
@@ -38,7 +38,7 @@ def random_number(n) :
     for i in range(n) :
         first_number = str(random.choice(lst_first_numbers))
         second_number = str(random.randint(1000000 , 9999999))
-        main_number = '0' + first_number + second_number
+        main_number = first_number + second_number
         lst_numbers.append(main_number)
     return lst_numbers
 
@@ -54,7 +54,7 @@ def make_random_contacts(id , f_name , l_name , lst_number) :
 # import to file.csv CSV
 def import_contacts_file(title , persons) :
     with open ('contacts.csv' , 'w') as f :
-        w = csv.writer(f)
+        w = csv.writer(f ,lineterminator='\n' )
         w.writerow(title)
         w.writerows(persons)
 

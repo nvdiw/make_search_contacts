@@ -2,7 +2,7 @@ import csv
 
 file = 'contacts_sorted_fname.csv'
 dataFrame = csv.reader(open(file , 'r'))
-numbers = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9']
+numbers = [str(i) for i in range(10)]
 input_q = input('searching for : ').lower()
 
 # if number return number if letter return letter
