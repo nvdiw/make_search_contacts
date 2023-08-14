@@ -57,8 +57,8 @@ def sort_by_merge(dataFrame) :
     for i in dataFrame :
         arr.append(i)
     n = len(arr)
-    a = merge_sort(arr, 1, n - 1)
+    lst = merge_sort(arr, 1, n - 1)
     for i in range(n - 1) :
-        print(a[i])
+        print(lst[i])
 
 sort_by_merge(dataFrame)
