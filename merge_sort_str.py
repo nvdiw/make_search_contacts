@@ -2,10 +2,9 @@ import csv
 
 file = 'contacts.csv'
 dataFrame = csv.reader(open(file , 'r'))
-x = 1
 
 # Function to compare 2 words
-def is_alphabetically_smaller(str1, str2):
+def is_alphabetically_smaller(str1, str2, x):
     if type(str1) == list :
         str1 = str1[x]
     if type(str2) == list :
@@ -18,7 +17,7 @@ def is_alphabetically_smaller(str1, str2):
     return False
 
 # merge arrays
-def merge(arr1, arr2):
+def merge(arr1, arr2, x):
     m = len(arr1)
     n = len(arr2)
     arr3 = []
@@ -26,7 +25,7 @@ def merge(arr1, arr2):
     i = 0
     j = 0
     while i < m and j < n:
-        if is_alphabetically_smaller(arr1[i], arr2[j]):
+        if is_alphabetically_smaller(arr1[i], arr2[j], x):
             arr3.append(arr1[i])
             i += 1
         else:
@@ -41,24 +40,24 @@ def merge(arr1, arr2):
     return arr3
 
 # Function to mergeSort 2 arrays
-def merge_sort(arr, lo, hi):
+def merge_sort(arr, lo, hi, x):
     if lo == hi:
         return [arr[lo]]
     mid = lo + (hi - lo) // 2
-    arr1 = merge_sort(arr, lo, mid)
-    arr2 = merge_sort(arr, mid + 1, hi)
+    arr1 = merge_sort(arr, lo, mid, x)
+    arr2 = merge_sort(arr, mid + 1, hi, x)
  
-    arr3 = merge(arr1, arr2)
+    arr3 = merge(arr1, arr2, x)
     return arr3
 
 # Driver code
-def sort_by_merge(dataFrame) :
+def sort_by_merge(dataFrame , x) :
     arr = []
     for i in dataFrame :
         arr.append(i)
     n = len(arr)
-    lst = merge_sort(arr, 1, n - 1)
+    lst = merge_sort(arr, 1, n - 1, x)
     for i in range(n - 1) :
         print(lst[i])
 
-sort_by_merge(dataFrame)
+sort_by_merge(dataFrame , 2)
